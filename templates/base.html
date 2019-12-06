@@ -30,8 +30,10 @@
 
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/pygments/{{ PYGMENTS_STYLE|default('github') }}.min.css">
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/fontawesome.css">
+
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/brands.css">
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/academicons-1.8.6/css/academicons.min.css">
 
   {% if CUSTOM_CSS %}
     <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
@@ -100,9 +102,13 @@
         <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png" alt="{{ SITETITLE }}" title="{{ SITETITLE }}">
         {% endif %}
       </a>
+
       <h1><a href="{{ SITEURL }}">{{ SITETITLE }}</a></h1>
 
       {% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}
+    
+
+     <p class="lead">{{ BIO }} </p>
 
       {% if pages or LINKS %}
       <nav>
@@ -140,12 +146,15 @@
         {% for name, link in SOCIAL %}
           <li>
             <a {% if name == 'mastodon' %}rel="me"{% endif %} class="sc-{{ name }}" href="{{ link }}" target="_blank">
-            <i class="{% if name in ['envelope', 'rss'] %}fas{% else %}fab{% endif %} fa-{{ name }}">
+            <i class="{% if name in ['envelope', 'rss'] %}fas fa-{{ name }} {% elif name in ['google-scholar']%}ai ai-{{name}}{% else %}fab fa-{{ name }}{% endif %}">
             </i>
           </a></li>
         {% endfor %}
       </ul>
+
+
     </div>
+
 
     {% if GOOGLE_ADSENSE and GOOGLE_ADSENSE.ads.aside %}
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
